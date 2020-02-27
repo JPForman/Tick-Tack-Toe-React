@@ -30,7 +30,10 @@ function reducer(state = initialState, action) {
       stepNumber: history.length,
       xIsNext: !state.xIsNext,
     };
-      console.log(newState);
+      return newState;
+    case 'TIME_TRAVEL':
+      newState = Object.assign({}, state, { stepNumber: action.step, xIsNext: (action.step % 2) === 0,})
+
       return newState;
     default:
       return state;
